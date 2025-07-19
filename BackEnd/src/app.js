@@ -10,6 +10,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
+
+// Allow only frontend URL in production
+const allowedOrigins = ["https://code-reviewer-eight-rho.vercel.app/"];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+}));
+
 app.get('/', (req,res) => {
     res.send('Hello, World! hii');
 })
