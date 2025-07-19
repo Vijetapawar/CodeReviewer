@@ -7,6 +7,7 @@ exports.getReview = async (req, res) => {
 
     if (!code || code.trim() === "") {
       return res.status(400).json({ error: "Code input is required." });
+      
     }
 
     const prompt = cleanReviewPrompt(code);
