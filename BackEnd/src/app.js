@@ -6,12 +6,6 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
-
-
-
-
 // Allow only frontend URL in production
 const allowedOrigins = [
   "https://code-reviewer-git-main-vijetapawars-projects.vercel.app",
@@ -31,6 +25,10 @@ app.use(
   })
 );
 
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', (req,res) => {
