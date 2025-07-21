@@ -4,6 +4,8 @@ require("dotenv").config();
 async function generateContent(prompt) {
   try {
     const apikey = process.env.GOOGLE_GEMINI_KEY;
+    console.log("🔑 API KEY FOUND:", apikey);
+
     if (!apikey) {
       throw new Error("❌ Google AI API key is missing. Check your .env file.");
     }
@@ -11,7 +13,7 @@ async function generateContent(prompt) {
     const genAI = new GoogleGenerativeAI(apikey);
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
+      model: "gemini-1.5-pro-latest",
       systemInstruction: `
 
       You are a Senior Code Reviewer (7+ years experience). Your task is to review code and give concise, clear feedback in the following format.
@@ -64,7 +66,6 @@ async function generateContent(prompt) {
 
       💡 **Tip:** Use async/await with try/catch for safer API calls.
       `,
-
     });
 
     const result = await model.generateContent(prompt);
