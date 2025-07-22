@@ -56,9 +56,11 @@ const cors = require("cors");
 const app = express();
 
 const allowedOrigins = [
+  "https://code-reviewer-eight-rho.vercel.app",
   "https://code-reviewer-git-main-vijetapawars-projects.vercel.app",
   "https://code-reviewer-789qr7s41-vijetapawars-projects.vercel.app",
 ];
+
 
 app.use(
   cors({
